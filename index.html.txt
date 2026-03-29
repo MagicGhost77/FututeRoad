@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Future Roads</title>
+  <style>
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Apply fade-in to story text */
+#story {
+  animation: fadeIn 1s ease;
+}
+/* General button styling */
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.5s ease;
+}
+
+/* Start button with pulse animation */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(33,150,243,0.7); }
+  50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(33,150,243,0.7); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(33,150,243,0.7); }
+}
+
+#startBtn {
+  background: linear-gradient(135deg, #2196F3, #1565C0);
+  animation: pulse 2s infinite;
+}
+
+/* Language button */
+#langBtn {
+  background: linear-gradient(135deg, #FF9800, #F57C00);
+}
+
+/* Choice buttons inside the game */
+#choices button {
+  margin: 8px;
+  padding: 12px 18px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.5s ease;
+}
+
+/* Hover animation for choices */
+#choices button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #66BB6A, #388E3C);
+}
+
+/* Click (active) animation for choices */
+#choices button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; transition: background 1s ease; }
+    #game { background: rgba(255,255,255,0.9); padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; }
+    button { margin: 5px; padding: 10px; }
+    .stat-bar { height: 20px; background: #ddd; border-radius: 10px; margin: 5px 0; }
+    .fill { height: 100%; border-radius: 10px; transition: width 0.5s ease; }
+    #moneyFill { background: gold; }
+    #reputationFill { background: dodgerblue; }
+    #innovationFill { background: limegreen; }
+    .icon { font-size: 18px; margin-right: 5px; }
+    #carImage { opacity: 0; transition: opacity 1s ease; max-width: 100%; border-radius: 8px; margin-top: 20px; }
+    #carImage.show { opacity: 1; }
+
+    /* Background themes */
+    body.affordable {
+      background: url('affordable-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body.luxury {
+      background: url('luxury-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body.eco {
+      background: url('eco-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Button styling */
+    #startBtn, #langBtn {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game">
+    <h1>🚗 Future Roads</h1>
+    <p id="story">Welcome to Cairo, 2040. You are Hassan, founder of a car startup.</p>
+
+    <!-- Buttons appear only on the first page -->
+  <label for="playerName">Enter your name:</label>
+<input type="text" id="playerName" placeholder="Your name">
+
+    <button id="startBtn">Start Game</button>
+<label id="playerNameLabel" for="playerName">Enter your name:</label>
+<input type="text" id="playerName" placeholder="Your name">
+    <button id="langBtn">🇬🇧 Switch to Arabic</button>
+
+    <div id="choices"></div>
+
+    <h3>Stats</h3>
+    <div><span class="icon">💰</span> Money</div>
+    <div class="stat-bar"><div id="moneyFill" class="fill"></div></div>
+
+    <div><span class="icon">⭐</span> Reputation</div>
+    <div class="stat-bar"><div id="reputationFill" class="fill"></div></div>
+
+    <div><span class="icon">⚡</span> Innovation</div>
+    <div class="stat-bar"><div id="innovationFill" class="fill"></div></div>
+
+    <div id="image" style="text-align:center;">
+      <img id="carImage" src="" alt="Car Image">
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
